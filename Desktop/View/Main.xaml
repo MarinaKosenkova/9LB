@@ -1,0 +1,77 @@
+﻿<Page x:Class="Desktop.View.Main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:Desktop.View"
+      xmlns:taskfolder="clr-namespace:Desktop.TaskFolder"
+      mc:Ignorable="d"
+      Title="Main">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="21*" />
+            <ColumnDefinition Width="14*" />
+        </Grid.ColumnDefinitions>
+
+        <Image x:Name="profileImageButton" HorizontalAlignment="Center" Height="80" Margin="0,10,0,0" VerticalAlignment="Top" Width="80" Source="/profile.png" MouseEnter="ProfileImageButton_MouseEnter"/>
+        <TextBlock x:Name="UserNameBlock" VerticalAlignment="Top" FontSize="18" Margin="0,106,0,0" Text="Alex" TextAlignment="Center" Width="100" Height="21" HorizontalAlignment="Center"/>
+        <Grid x:Name="menuGrid" Margin="0,0,378,422" Background="#FFE6E6E6" MouseLeave="MenuGrid_MouseLeave" Visibility="Hidden" Grid.ColumnSpan="2">
+            <Button x:Name="exitB" Content="Выход" HorizontalAlignment="Left" Margin="25,20,0,0" VerticalAlignment="Top" Width="53" FontSize="17" BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="0,0,0,0" Click="ExitB_Click"/>
+            <Button x:Name="profileImageSwitch" Content="Изменить&#xA;фото&#xA;профиля" HorizontalAlignment="Left" Margin="25,60,0,0" VerticalAlignment="Top" Width="80" FontSize="17" BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="0,0,0,0" Click="ProfileImageSwitch_Click"/>
+        </Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="15,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Задачи" FontSize="18" Foreground="#FF4E2E2C" MouseDown="TasksTextBlock_MouseDown"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="История" FontSize="18" Foreground="#FF4E2E2C" MouseDown="HistoryTextBlock_MouseDown"/>
+
+        <Border x:Name="CreateNewTaskB" Height="70" Width="70" CornerRadius="100" Grid.Column="0" VerticalAlignment="Top" Margin="12,481,12,0" MouseDown="CreateNewTaskB_MouseDown">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF96060"/>
+                    <GradientStop Color="#FFFD9393" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <TextBlock Background="{x:Null}" Foreground="White"  FontWeight="Bold" FontSize="26" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False">+</TextBlock>
+        </Border>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45*"/>
+                <RowDefinition Height="247*"/>
+            </Grid.RowDefinitions>
+
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                <StackPanel x:Name="CategorySPanel" Orientation="Horizontal" VerticalAlignment="Bottom">
+                    <TextBlock Text="Дом" FontSize="18" Margin="40 0 0 0" Foreground="#FF86C227" FontWeight="DemiBold" MouseDown="CategoryTextBlock_MouseDown"/>
+                    <TextBlock Text="Работа" FontSize="18" Margin="30 0 0 0" Foreground="#FFD46221" FontWeight="DemiBold" MouseDown="CategoryTextBlock_MouseDown"/>
+                    <TextBlock Text="Учеба" FontSize="18" Margin="30 0 0 0" Foreground="#FF4947C0" FontWeight="DemiBold" MouseDown="CategoryTextBlock_MouseDown"/>
+                    <TextBlock Text="Отдых" FontSize="18" Margin="30 0 0 0" Foreground="#FFA71ACC" FontWeight="DemiBold" MouseDown="CategoryTextBlock_MouseDown"/>
+                </StackPanel>
+            </ScrollViewer>
+
+            <ScrollViewer Grid.Row="1" Margin="15,15,15,0" VerticalScrollBarVisibility="Auto">
+                <StackPanel x:Name="ItemsTasksSPanel" VerticalAlignment="Top" Margin="10">
+                    <taskfolder:TaskItem MouseDown="TaskItem_MouseDown">
+                        <taskfolder:TaskItem.Effect>
+                            <DropShadowEffect Direction="-90" ShadowDepth="5" Color="#f2f2f2f2" BlurRadius="20"/>
+                        </taskfolder:TaskItem.Effect>
+                    </taskfolder:TaskItem>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="91*"/>
+                <RowDefinition Height="417*"/>
+                <RowDefinition Height="76*"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="TaskInfoBlock" Grid.Row="1" Width="260" Height="397">
+                <taskfolder:TaskInfo x:Name="TaskI" Visibility="Collapsed">
+                    <taskfolder:TaskInfo.Effect>
+                        <DropShadowEffect Color="#f2f2f2f2" BlurRadius="5" ShadowDepth="0" Direction="-90"/>
+                    </taskfolder:TaskInfo.Effect>
+                </taskfolder:TaskInfo>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

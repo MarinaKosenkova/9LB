@@ -1,0 +1,92 @@
+﻿<Page x:Class="Desktop.View.CreateNewTask"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:Desktop.View"
+      mc:Ignorable="d"
+      Title="CreateNewTask">
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="517*"/>
+            <RowDefinition Height="67*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="0 30 0 0">
+                <TextBlock Text="Название" FontSize="20" Margin="30 0 0 5"/>
+                <Border Background="White" Height="70" CornerRadius="20" Margin="20 0 20 5">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="15" Color="LightGray"/>
+                    </Border.Effect>
+                    <TextBox x:Name="TitleNewTaskTextBox" FontSize="18" Background="{x:Null}" BorderBrush="{x:Null}" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Height="70" SelectionBrush="#FF13CCFF"/>
+                </Border>
+                <TextBlock Text="Категория" FontSize="20" Margin="30 10 0 5"/>
+                <Border Background="White" Height="65" CornerRadius="20" Margin="20 0 20 5">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="15" Color="LightGray"/>
+                    </Border.Effect>
+                    <TextBox x:Name="CategoryNewTaskTextBox" FontSize="18" Background="{x:Null}" BorderBrush="{x:Null}" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Height="65" SelectionBrush="#FF13CCFF">
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Удалить категорию" Click="DeleteCategoryMenuItem_Click"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+                </Border>
+                <TextBlock Text="Описание" FontSize="20" Margin="30 10 0 5"/>
+                <Border Background="White" Height="200" CornerRadius="20" Margin="20 0 20 5">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="15" Color="LightGray"/>
+                    </Border.Effect>
+                    <TextBox FontSize="16" Background="{x:Null}" BorderBrush="{x:Null}" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Height="200" SelectionBrush="#FF13CCFF"/>
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Border CornerRadius="20" Background="White" Height="250" Margin="30 55 30 0">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="15" Color="LightGray"/>
+                    </Border.Effect>
+                    <DatePicker x:Name="DateNewTaskDatePicker" Background="{x:Null}" BorderBrush="{x:Null}" Margin="10" FontSize="18" Foreground="Black" SelectedDateFormat="Long" DisplayDateStart="2024-01-01"/>
+                </Border>
+                <Border CornerRadius="20" Background="White" Height="150" Margin="30 25 30 0">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="15" Color="LightGray"/>
+                    </Border.Effect>
+                    <TextBox x:Name="TimePickerTextBox" FontSize="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" PreviewTextInput="TimePickerTextBox_PreviewTextInput" TextChanged="TimePickerTextBox_TextChanged" SelectionBrush="#FF13CCFF"/>
+                </Border>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Margin="0,2,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Height="50">
+                <Button x:Name="DoneNewTaskButton" Margin="0 0 50 0" Click="DoneNewTaskButton_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="350" Background="#FF1AD21A" CornerRadius="20">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" Color="LightGray" BlurRadius="15"/>
+                                </Border.Effect>
+                                <TextBlock Text="Создать" Foreground="White" FontSize="22" FontWeight="Regular" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="CancelNewTaskButton" Click="CancelNewTaskButton_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="350" Background="#FFEE3516" CornerRadius="20">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" Color="LightGray" BlurRadius="15"/>
+                                </Border.Effect>
+                                <TextBlock Text="Отмена" Foreground="White" FontSize="22" FontWeight="Regular" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
